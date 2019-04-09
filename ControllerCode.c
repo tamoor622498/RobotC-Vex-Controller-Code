@@ -12,22 +12,22 @@ task main(){
 	motor[ClawServo] = 0;
 
 	while(true){
-		if ((vexRT[Btn8D] != 0)||(vexRT[Btn8R] != 0)||(vexRT[Ch1] != 0)||(vexRT[Btn5D] != 0)||(vexRT[Btn5U] != 0)||(vexRT[Btn6D] != 0)||vexRT[Btn6U] != 0){
-			if (vexRT[Btn8D] == 1){
-				motor[LMotor] = 127;
-				motor[RMotor] = 127;
-			}											//This moves the bot forward, press button 8D
-
+		if ((vexRT[Btn8D] != 0)||(vexRT[Btn8R] != 0)||(vexRT[Ch4] != 0)||(vexRT[Btn5D] != 0)||(vexRT[Btn5U] != 0)||(vexRT[Btn6D] != 0)||vexRT[Btn6U] != 0){
 			if (vexRT[Btn8R] == 1){
-				motor[LMotor] = -100;
-				motor[RMotor] = -100;
+				motor[LMotor] = 100;
+				motor[RMotor] = 100;
 			}											//This moves the bot back, press button 8R
 
-			if (vexRT[Ch1] > 0){
+			if (vexRT[Btn8D] == 1){
+				motor[LMotor] = -80;
+				motor[RMotor] = -80;
+			}											//This moves the bot forward, press button 8D
+
+			if (vexRT[Ch4] > 0){
 				motor[LMotor] = 100;
 				motor[RMotor] = -100;
 			}											//This emulates tank drive.
-			if (vexRT[Ch1] < 0){		//Instead of using both joysticks, you can move channel 1 left or right.
+			if (vexRT[Ch4] < 0){		//Instead of using both joysticks, you can move channel 1 left or right.
 				motor[LMotor] = -100;
 				motor[RMotor] = 100;
 			}
