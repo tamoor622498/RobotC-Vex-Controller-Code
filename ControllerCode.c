@@ -13,6 +13,7 @@ task main(){
 
 	while(true){
 		if ((vexRT[Btn8D] != 0)||(vexRT[Btn8R] != 0)||(vexRT[Ch4] != 0)||(vexRT[Btn5D] != 0)||(vexRT[Btn5U] != 0)||(vexRT[Btn6D] != 0)||vexRT[Btn6U] != 0){
+
 			if (vexRT[Btn8R] == 1){
 				motor[LMotor] = 100;
 				motor[RMotor] = 100;
@@ -40,18 +41,20 @@ task main(){
 			}
 
 			if (vexRT[Btn6U] == 1){
-				motor[ClawServo] = (vexRT[Ch3] * .5);
-				//motor[ClawServo] = 127;
+				//motor[ClawServo] = (vexRT[Ch3] * .5);
+				motor[ClawServo] = 127;
 			}											//This opens and closes the claw. 6U opens. 6D closes.
 			if (vexRT[Btn6D] == 1){
-				motor[ClawServo] = -(vexRT[Ch3] * .5);
-				//motor[ClawServo] = -127;
+				//motor[ClawServo] = -(vexRT[Ch3] * .5);
+				//motor[ClawServo] = -50;
 			}
 		}
 		else{
+			motor[ClawServo] = -127;
 			motor[ClawMotor] = 0;
 			motor[LMotor] = 0;
 			motor[RMotor] = 0;
 			}
 	}
+
 }
