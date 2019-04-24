@@ -12,7 +12,7 @@ task main(){
 	motor[ClawServo] = 0;
 
 	while(true){
-		if ((vexRT[Btn8D] != 0)||(vexRT[Btn8R] != 0)||(vexRT[Ch4] != 0)||(vexRT[Btn5D] != 0)||(vexRT[Btn5U] != 0)||vexRT[Btn6U] != 0){
+		if ((vexRT[Btn8D] != 0)||(vexRT[Btn8U] != 0)||(vexRT[Btn8L] != 0)||(vexRT[Btn8R] != 0)||(vexRT[Ch4] != 0)||(vexRT[Btn5D] != 0)||(vexRT[Btn5U] != 0)||vexRT[Btn6U] != 0 || vexRT[Btn6D] != 0){
 
 			if (vexRT[Btn8R] == 1){
 				motor[LMotor] = 100;
@@ -22,15 +22,24 @@ task main(){
 			if (vexRT[Btn8D] == 1){
 				motor[LMotor] = -80;
 				motor[RMotor] = -80;
-			}											//This moves the bot forward, press button 8D
+			}//This moves the bot forward, press button 8D
 
-			if (vexRT[Ch4] > 0){
-				motor[LMotor] = 100;
-				motor[RMotor] = -100;
+			if (vexRT[Btn8L] == 1){
+				motor[LMotor] = 127;
+				motor[RMotor] = 127;
+			}
+			if (vexRT[Btn8U] == 1){
+				motor[LMotor] = 30;
+				motor[RMotor] = 30;
+			}
+
+			if (vexRT[Ch4] > 25){
+				motor[LMotor] = 75;
+				motor[RMotor] = -75;
 			}											//This emulates tank drive.
-			if (vexRT[Ch4] < 0){		//Instead of using both joysticks, you can move channel 1 left or right.
-				motor[LMotor] = -100;
-				motor[RMotor] = 100;
+			if (vexRT[Ch4] < -25){		//Instead of using both joysticks, you can move channel 1 left or right.
+				motor[LMotor] = -75;
+				motor[RMotor] = 75;
 			}
 
 			if (vexRT[Btn5U] == 1){
@@ -43,10 +52,14 @@ task main(){
 			if (vexRT[Btn6U] == 1){
 				//motor[ClawServo] = (vexRT[Ch3] * .5);
 				motor[ClawServo] = 127;
-			}											//This opens and closes the claw. 6U opens. 6D closes.
+			}
+			if (vexRT[Btn6D] == 1){
+				//motor[ClawServo] = (vexRT[Ch3] * .5);
+				motor[ClawServo] = -127;
+			}//This opens and closes the claw. 6U opens. 6D closes.
 		}
 		else{
-			motor[ClawServo] = -127;
+			//motor[ClawServo] = -127;
 			motor[ClawMotor] = 0;
 			motor[LMotor] = 0;
 			motor[RMotor] = 0;
